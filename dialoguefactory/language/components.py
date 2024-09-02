@@ -149,7 +149,7 @@ class Arg:
         For example, in the sentence "Andy sees the small ball,
         the big ball, and the red toy.", the Arg-PPT's value is [small_ball, big_ball, red_toy].
         The connectors between the items are not important for the semantics and are left out in the
-        value but included in the part. Please find more information about how the values are computed in our `paper <https://rgdoi.net/10.13140/RG.2.2.17884.19846>`_.
+        value but included in the part. Please find more information about how the values are computed in our `paper <http://dx.doi.org/10.13140/RG.2.2.22518.41283>`_.
     part : Union[Word, Phrase, Sentence, list, set], optional
        The language part carries the syntax of the PropBank argument. It includes all words and connectors that appear
        in the sentence. For the example above, the language part of Arg-PPT is:
@@ -256,7 +256,7 @@ class Describer:
     the numbers in the names of PropBank arguments are ignored so that the order of
     the arguments is no longer important. This way, the grammatical structure of the
     sentence is left out, and the focus is strictly on the semantics.
-    Please check our `paper <https://rgdoi.net/10.13140/RG.2.2.17884.19846>`_ to see all the modifications that we did.
+    Please check our `paper <http://dx.doi.org/10.13140/RG.2.2.22518.41283>`_ to see all the modifications that we did.
 
     Attributes
     ----------

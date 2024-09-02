@@ -76,13 +76,13 @@ Each time a user or an agent acts, the environment provides feedback (except whe
 
 The dialogues are continuous in time, and their course depends on the utterances from previous dialogues. Once a dialogue ends, it is added to the context log, which grows over time and requires the agent to develop long-term memory to remember important facts about the past. Since the environment is multi-player, the agent can observe and learn from the actions of previous agents. Additionally, the agent needs logical reasoning to infer information not explicitly stated in the context. For instance, if a player's location is in the bedroom, then it is implicit that the location of a player is not in the bathroom. On the other hand, the user's behavior is straightforward. They issue a single request and then stop speaking.
 
-We generate dialogues from dialogue templates with the help of our library DialogueFactory. We created 11 types of user-agent dialogue templates, which are explained in the section *Challenge* of our [paper](https://rgdoi.net/10.13140/RG.2.2.17884.19846). However, our library can be used to make any dialogue template and is not limited to generating user-agent dialogues.
+We generate dialogues from dialogue templates with the help of our library DialogueFactory. We created 11 types of user-agent dialogue templates, which are explained in the section *Challenge* of our [paper](http://dx.doi.org/10.13140/RG.2.2.22518.41283). However, our library can be used to make any dialogue template and is not limited to generating user-agent dialogues.
 
 ## The challenge
 
 We challenge you to train a machine learning model to enable Gretel to utter the correct sentences in our [dialogues](#the-dialogues). Gretel is the main player in the textual world. To help you get started, we have created the following notebooks that contain examples of how to train and evaluate the agent: [start.ipynb](start.ipynb) and [baseline.ipynb](baseline.ipynb)
 
-Please refer to the *Challenge* section in our [paper](https://rgdoi.net/10.13140/RG.2.2.17884.19846), where we outline the rules. We kindly ask you to report the metrics that we require, which are also displayed on our [leaderboard](https://revivegretel.com/leaderboard). You are welcome to report any additional metrics or any interesting findings.
+Please refer to the *Challenge* section in our [paper](http://dx.doi.org/10.13140/RG.2.2.22518.41283), where we outline the rules. We kindly ask you to report the metrics that we require, which are also displayed on our [leaderboard](https://revivegretel.com/leaderboard). You are welcome to report any additional metrics or any interesting findings.
 
 If you have any questions or require assistance with the challenge, please feel free to open a new GitHub issue. We're happy to inform you that we provide [documentation](https://revivegretel.com/docs) of our code.
 
@@ -102,9 +102,7 @@ To submit your solution, please open a new GitHub issue. Provide a link to your 
 ## Contribute
 
 ### Developing new dialogue templates
-Having dedicated substantial time to developing the DialogueFactory, we found ourselves needing help to develop all the necessary dialogue templates to reach our five-year milestone. We would greatly appreciate your assistance in developing the remaining templates. 
-
-The templates we need are detailed in the *Milestone* section of our [paper](https://rgdoi.net/10.13140/RG.2.2.17884.19846). However, if you're interested in developing templates that are important but aren't listed, feel free to submit those too. We are open to including them in our next challenge. You can find examples of templates [here](https://revivegretel.com/docs/dialoguefactory.generation.html#module-dialoguefactory.generation.templates).
+Having dedicated substantial time to developing the DialogueFactory, we found ourselves needing help to develop all the necessary dialogue templates to reach our five-year milestone. The templates we need are detailed in the *Milestone* section of our [paper](http://dx.doi.org/10.13140/RG.2.2.22518.41283). However, if you're interested in developing templates that are important but aren't listed, feel free to submit those too. We are open to including them in our next challenge. You can find examples of templates [here](https://revivegretel.com/docs/dialoguefactory.generation.html#module-dialoguefactory.generation.templates).
 
 ### Earn recognition by developing
 We will recognize the template developers for their contributions by featuring their new dialogue templates in our [Hall of Fame](https://revivegretel.com/hof). With your consent, we will include some of these templates in our next challenge. Every two months, we'll spotlight one outstanding template, publicly acknowledge it, and award a token prize to its creator. We also encourage developing and submitting new templates because DialogueFactory users will benefit from generating even more data for their models. Furthermore, through our combined effort, we can create the first logical agent.
@@ -132,12 +130,12 @@ We want to thank you for your support and belief in our mission!
 ## Cite us
 To cite our project, please use:
 ```bibtex
-@misc{martinovski2024rgc
-  doi = {10.13140/RG.2.2.17884.19846},
-  url = {https://rgdoi.net/10.13140/RG.2.2.17884.19846},
-  author = {Martinovski, Stefan},
+@article{martinovski2024rgc,
+  doi = {10.13140/RG.2.2.22518.41283},
+  url = {https://rgdoi.net/10.13140/RG.2.2.22518.41283},
+  author = {Martinovski,  Stefan},
   language = {en},
-  title = {The ReviveGretel Challenge: Can You Teach Language By Generating Dialogues In A Textual World?},
+  title = {The ReviveGretel Challenge: Can You Teach Language Understanding By Generating Dialogues In A Textual World?},
   publisher = {Preprint},
   year = {2024}
 }
