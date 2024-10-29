@@ -52,8 +52,8 @@ class KnowledgeBase:
         self.undo_changes = list() if undo_changes is None else undo_changes
         self.last_context_id = 0 if last_context_id is None else last_context_id
         self.sent_db = set() if sent_db is None else sent_db
-        self.updaters = [kn_updaters.property_update,
-                         kn_updaters.have_update,
+        self.updaters = [kn_updaters.property_updater,
+                         kn_updaters.have_updater,
                          kn_updaters.look_updater,
                          kn_updaters.see_updater,
                          kn_updaters.go_updater,
@@ -61,16 +61,16 @@ class KnowledgeBase:
                          kn_updaters.drop_updater,
                          kn_updaters.opens_updater,
                          kn_updaters.close_updater,
-                         kn_updaters.update_elem_exists,
+                         kn_updaters.elem_exists_updater,
                          kn_updaters.change_updater,
                          kn_updaters.permit_updater] if updaters is None else updaters
 
-        self.checkers = [kn_checkers.property_check,
-                         kn_checkers.have_check,
-                         kn_checkers.check_elem_exists,
-                         kn_checkers.unique_desc_check,
+        self.checkers = [kn_checkers.property_checker,
+                         kn_checkers.have_checker,
+                         kn_checkers.elem_exists_checker,
+                         kn_checkers.unique_desc_checker,
                          kn_checkers.val_is_key_checker,
-                         kn_checkers.basic_check] if checkers is None else checkers
+                         kn_checkers.basic_checker] if checkers is None else checkers
 
     def context_update(self):
         """ Updates the knowledge base with the unseen context sentences. """

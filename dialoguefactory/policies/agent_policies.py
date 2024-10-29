@@ -169,17 +169,17 @@ class GoLocationPolicy(bpolicies.ActionPolicy):
                     list_undos = []
                     if (direction, 'obstacle') in player_loc.properties:
                         obs = player_loc.properties[(direction, 'obstacle')]
-                        check_obstacle = kn_checkers.property_check_alt(self.dialogue.dia_generator.knowledge_base,
-                                                                        player_loc,
-                                                                        (direction, "obstacle"),
-                                                                        obs,
-                                                                        None
-                                                                        )
-                        x_is_door = kn_checkers.property_check_alt(self.dialogue.dia_generator.knowledge_base,
-                                                                   obs,
+                        check_obstacle = kn_checkers.property_alt_checker(self.dialogue.dia_generator.knowledge_base,
+                                                                          player_loc,
+                                                                          (direction, "obstacle"),
+                                                                          obs,
+                                                                          None
+                                                                          )
+                        x_is_door = kn_checkers.property_alt_checker(self.dialogue.dia_generator.knowledge_base,
+                                                                     obs,
                                                                    "type",
                                                                    "door",
-                                                                   None)
+                                                                     None)
 
                         if 'type' in obs.properties and obs.properties['type'] == 'door' and 'locked' in obs.attributes:
                             res = actions.go(self.player, direction)
@@ -1061,11 +1061,11 @@ class IsItemPolicy(bpolicies.IsItem):
         else:
             property_key = tuple(property_key)
         knob_state = self.dialogue.dia_generator.knowledge_base
-        is_seen_pos = kn_checkers.property_check_alt(knob_state,
-                                                     item,
-                                                     property_key,
-                                                     property_val,
-                                                     None)
+        is_seen_pos = kn_checkers.property_alt_checker(knob_state,
+                                                       item,
+                                                       property_key,
+                                                       property_val,
+                                                       None)
 
         property_val_part = lhelpers.convert_obj_to_part(property_val)
 
@@ -1236,7 +1236,7 @@ class IsItemAttributePolicy(bpolicies.IsItem):
 
         dialogue = self.dialogue
         kb_state = dialogue.dia_generator.knowledge_base
-        is_seen_pos = kn_checkers.property_check_alt(kb_state, item, None, attribute, None)
+        is_seen_pos = kn_checkers.property_alt_checker(kb_state, item, None, attribute, None)
 
         attribute_part = lhelpers.convert_obj_to_part(attr_casted)
         if is_seen_pos is None:

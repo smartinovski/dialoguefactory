@@ -11,7 +11,7 @@ from ..environment import entities as em
 from ..language import sentences as tsentences
 
 
-def basic_check(kb_state, sent):
+def basic_checker(kb_state, sent):
     """
     Checks whether a sentence with the same meaning is present in the database.
 
@@ -42,7 +42,7 @@ def basic_check(kb_state, sent):
     return is_true
 
 
-def property_check(kb_state, sent):
+def property_checker(kb_state, sent):
     """
     Checks whether the sentence is in one of the following forms:
 
@@ -74,12 +74,12 @@ def property_check(kb_state, sent):
 
     if mem is not None:
         ent, pkey, pval, pneg = mem
-        has_prop = property_check_alt(kb_state, ent, pkey, pval, pneg)
+        has_prop = property_alt_checker(kb_state, ent, pkey, pval, pneg)
 
     return has_prop
 
 
-def property_check_alt(kb_state, ent, pkey, pval, pneg):
+def property_alt_checker(kb_state, ent, pkey, pval, pneg):
     """
     Checks whether the entity's (property_key, property_value) is the correct one and whether the property value
     is seen by the agent.
@@ -136,7 +136,7 @@ def property_check_alt(kb_state, ent, pkey, pval, pneg):
     return result
 
 
-def check_elem_exists(kb_state, sent):
+def elem_exists_checker(kb_state, sent):
     """
     Checks whether the sentence is in the form described in kn_parsers.elem_exists_parse
     and if so, extracts the arguments and calls the
@@ -164,11 +164,11 @@ def check_elem_exists(kb_state, sent):
     elem_exists = None
     if parsed is not None:
         ent, elem, pneg = parsed
-        elem_exists = check_elem_exists_alt(kb_state, ent, elem, pneg)
+        elem_exists = elem_exists_alt_checker(kb_state, ent, elem, pneg)
     return elem_exists
 
 
-def check_elem_exists_alt(kb_state, ent, elem, pneg):
+def elem_exists_alt_checker(kb_state, ent, elem, pneg):
     """
     Checks whether the entity's property key or attribute exists and is seen by the agent in the context.
 
@@ -211,7 +211,7 @@ def check_elem_exists_alt(kb_state, ent, elem, pneg):
     return result
 
 
-def have_check(kb_state, sent):
+def have_checker(kb_state, sent):
     """
     Checks whether an object has items on/under/in it and whether the agent has seen this information.
 
@@ -253,7 +253,7 @@ def have_check(kb_state, sent):
             for obj in objs:
                 if not isinstance(obj, em.Entity):
                     return None
-                res = property_check_alt(kb_state, obj, "location", loc, neg)
+                res = property_alt_checker(kb_state, obj, "location", loc, neg)
                 results.append(res)
             if len(results) > 0 and all(results):
                 is_true = True
@@ -264,7 +264,7 @@ def have_check(kb_state, sent):
     return is_true
 
 
-def unique_desc_check(kb_state, sent):
+def unique_desc_checker(kb_state, sent):
     """
     Checks whether the sentence is in the following form:
 
@@ -368,5 +368,5 @@ def val_is_key_checker(kb_state, sent):
             elif am_neg is None:
                 result = arg_prd in all_keys
         if result is None:
-            result = basic_check(kb_state, sent)
+            result = basic_checker(kb_state, sent)
         return result

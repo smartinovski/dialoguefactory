@@ -14,7 +14,7 @@ from . import kn_parsers
 from ..environment import entities as em
 
 
-def basic_update(kb_state, sent):
+def basic_updater(kb_state, sent):
     """
     Add the sentence to the list of factual sentences (in the sent_db) and
     remove the opposite sentence if it exists. The sentence has to come from a trusted source.
@@ -50,7 +50,7 @@ def basic_update(kb_state, sent):
         kb_state.undo_changes.append(undo_remove)
 
 
-def property_update(kb_state, sent):
+def property_updater(kb_state, sent):
     """
     Extract the entity, property key, property value, and the negation from the following sentence:
 
@@ -171,7 +171,7 @@ def property_update_alt(kb_state, ent, pkey, pval, pneg):
     return None
 
 
-def update_elem_exists(kb_state, sent):
+def elem_exists_updater(kb_state, sent):
     """
     Checks whether the sentence is in the form described in kn_parsers.elem_exists_parse
     and if so, extracts the arguments and calls the update_elem_exists_alt function.
@@ -180,10 +180,10 @@ def update_elem_exists(kb_state, sent):
     parsed = kn_parsers.elem_exists_parse(sent)
     if parsed is not None:
         ent, elem, pneg = parsed
-        update_elem_exists_alt(kb_state, ent, elem, pneg)
+        elem_exists_alt_updater(kb_state, ent, elem, pneg)
 
 
-def update_elem_exists_alt(kb_state, ent, elem, pneg):
+def elem_exists_alt_updater(kb_state, ent, elem, pneg):
     """
     Updates one of the following dictionaries:
 
@@ -254,7 +254,7 @@ def update_elem_exists_alt(kb_state, ent, elem, pneg):
     return None
 
 
-def have_update(kb_state, sent):
+def have_updater(kb_state, sent):
     """
     Marks the location of the entities that belong to a possessor as observed.
 
@@ -595,7 +595,7 @@ def change_updater(kb_state, sent):
         if isinstance(arg_ppt, lc.Sentence):
             element_key = arg_ppt.describers[0].get_arg("Arg-PPT")
             if tsentences.permit(tsentences.change(rel="changing", thing_changing=element_key), "not", "permitted") == sent and element_key not in changable_properties:
-                basic_update(kb_state, sent)
+                basic_updater(kb_state, sent)
 
 
 def val_is_key_updater(kb_state, sent):
@@ -628,10 +628,10 @@ def val_is_key_updater(kb_state, sent):
         kn_checked = kb_state.world.check_val_is_key(arg_prd, arg_ppt)
         if kn_checked is True:
             if am_neg != "not":
-                basic_update(kb_state, sent)
+                basic_updater(kb_state, sent)
         elif kn_checked is False:
             if am_neg == "not":
-                basic_update(kb_state, sent)
+                basic_updater(kb_state, sent)
 
 
 def permit_updater(kb_state, sent):
@@ -673,4 +673,4 @@ def permit_updater(kb_state, sent):
                                                        rel=("permitted", None))
 
             if sent in [getting_players]+changing_permit_sents+[dropping_not_permitted]:
-                basic_update(kb_state, sent)
+                basic_updater(kb_state, sent)

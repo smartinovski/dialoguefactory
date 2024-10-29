@@ -488,7 +488,7 @@ def check_path(know_base, iloc, directions, dir_idx, tloc):
 
     pkey = directions[dir_idx]
     pval = iloc.properties[pkey]
-    is_seen = kn_checkers.property_check_alt(know_base, iloc, pkey, pval, None)
+    is_seen = kn_checkers.property_alt_checker(know_base, iloc, pkey, pval, None)
 
     if is_seen:
         further_check = check_path(know_base, pval, directions, dir_idx+1, tloc)
@@ -523,7 +523,7 @@ def check_loc(know_base, item, item_loc):
 
     """
 
-    is_seen = kn_checkers.property_check_alt(know_base, item, 'location', item_loc, None)
+    is_seen = kn_checkers.property_alt_checker(know_base, item, 'location', item_loc, None)
     if item_loc[1] == item and is_seen:
         return None
 
@@ -574,7 +574,7 @@ def path_revealed(dialogue, player, sloc, tloc, neg_res):
         path_not_exist = True
         for direction in dialogue.dia_generator.world.directions:
             for place in dialogue.dia_generator.world.places:
-                if kn_checkers.check_elem_exists_alt(know_base, place, direction, None) is None:
+                if kn_checkers.elem_exists_alt_checker(know_base, place, direction, None) is None:
                     path_not_exist = False
                     break
 

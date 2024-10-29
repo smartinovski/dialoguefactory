@@ -239,9 +239,9 @@ class ActionPolicy(BasePolicy, ABC):
         for sitem in similar_items:
             result = True
             for elem in item.description.elements:
-                if elem in sitem.properties and not kn_checkers.property_check_alt(know_base, sitem, elem, sitem.properties[elem], None):
+                if elem in sitem.properties and not kn_checkers.property_alt_checker(know_base, sitem, elem, sitem.properties[elem], None):
                     result = False
-                if elem != 'abstract' and elem in sitem.attributes and not kn_checkers.property_check_alt(know_base, sitem, None, elem, None):
+                if elem != 'abstract' and elem in sitem.attributes and not kn_checkers.property_alt_checker(know_base, sitem, None, elem, None):
                     result = False
             if result is True:
                 new_similar_items.append(sitem)
