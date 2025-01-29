@@ -42,7 +42,6 @@ class ListDb:
             > instance[1]
             [sent2]
         """
-
         if isinstance(idx, int):
             return self.elements[idx]
         elif isinstance(idx, slice):
@@ -179,10 +178,9 @@ class StringListDb(ListDb):
         """ Queries an element from the list by index or multiple elements using a range start_idx:end_idx:step.
             If the range goes beyond the list boundaries, the list elements can be fetched from the file.
         """
-
         if isinstance(idx, int):
-            return self.elements[idx]
-        elif isinstance(idx, slice):
+            idx = slice(idx, idx+1)
+        if isinstance(idx, slice):
             elements = []
             border = self.num_elements - len(self.elements)
             start_at, stop_at, step = self.separate_slice(idx)
@@ -202,8 +200,8 @@ class StringListDb(ListDb):
             deleted.
         """
         if isinstance(idx, int):
-            del self.elements[idx]
-        elif isinstance(idx, slice):
+            idx = slice(idx, idx+1)
+        if isinstance(idx, slice):
             border = self.num_elements - len(self.elements)
             start_at, stop_at, step = self.separate_slice(idx)
 
@@ -220,6 +218,9 @@ class StringListDb(ListDb):
                 num_removed_list = len(self.elements[0:stop_at - border:step])
                 del self.elements[0:stop_at - border:step]
                 self.num_elements = self.num_elements - (num_removed_file + num_removed_list)
+
+    def __iter__(self):
+        return iter(self.get(self.num_elements))
 
     def get(self, last_num_elements):
         """ Gets the last number of elements from the list. This function

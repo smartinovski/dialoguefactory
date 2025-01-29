@@ -4,9 +4,9 @@
 ![Repo Size](https://img.shields.io/github/repo-size/smartinovski/dialoguefactory?color=ff1493)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
-DialogueFactory is a library that automatically generates synthetic dialogues grounded in a textual world. The library can generate unlimited data to feed your chatbot and dialogue models. 
+DialogueFactory is a library that automatically generates synthetic dialogues grounded in a textual world. The library can generate unlimited data to feed your chatbot and dialogue models. Our dialogues allow your models to be trained using Reinforcement or Supervised Learning. 
 
-The dialogues are generated using preprogrammed templates. The templates are Python functions with parameters like the dialogue participants, policies, and the dialogue's goal. Each policy is rule-based and determines the participant's responses based on context.
+The dialogues are generated using preprogrammed templates. The templates are Python functions with parameters like the dialogue participants, policies, and the dialogue's goal. Each policy is rule-based and determines the participant's responses based on context. 
 
 The library comes with a set of templates that can be immediately used to generate new [dialogues](#the-dialogues). Our library also offers the necessary tools to develop new templates. Please check our [example notebook](template_tutorial.ipynb) to see how to develop a new template.
 
@@ -72,7 +72,7 @@ Otto says: Gretel, Is Ada's location in the kitchen?
 Gretel says: Ada's location is not in the kitchen.
 ```
  
-Each time a user or an agent acts, the environment provides feedback (except when executing the action "say"). Therefore, we consider the environment as an additional dialogue participant. The agent continues to act until it achieves its goal or exceeds the maximum number of steps. 
+The environment provides feedback each time a user or agent acts (except when executing the action "say"). Therefore, we consider the environment an additional dialogue participant. The agent continues to act until it achieves its goal or exceeds the maximum number of steps. 
 
 The agents use a rule-based policy to respond to the dialogue. During the training/evaluation of the machine learning model, the rule-based policy is replaced with the machine learning policy. The dialogue's goal remains rule-based and is determined based on the context.
 
@@ -84,16 +84,12 @@ We generate dialogues from dialogue templates with the help of our library Dialo
 
 We challenge you to train a machine learning model to enable Gretel to utter the correct sentences in our [dialogues](#the-dialogues). Gretel is the main player in the textual world. To help you get started, we have created the following notebooks that contain examples of how to train and evaluate the agent: [start.ipynb](start.ipynb) and [baseline.ipynb](baseline.ipynb)
 
-Please refer to the *Challenge* section in our [paper](http://dx.doi.org/10.13140/RG.2.2.22518.41283), where we outline the rules. We kindly ask you to report the metrics that we require, which are also displayed on our [leaderboard](https://revivegretel.com/leaderboard). You are welcome to report any additional metrics or any interesting findings.
+Please refer to the *Challenge* section in our [paper](http://dx.doi.org/10.13140/RG.2.2.22518.41283), where we outline the rules. We kindly ask you to report the required metrics, which are also displayed on our [leaderboard](https://revivegretel.com/leaderboard). You are welcome to report any additional metrics or any interesting findings.
 
 If you have any questions or require assistance with the challenge, please feel free to open a new GitHub issue. We're happy to inform you that we provide [documentation](https://revivegretel.com/docs) of our code.
 
 ### Win prizes and recognition
-The competition has no time limit. However, the first three contestants who reach more than 95% on all dialogue types in the testing environment will earn a special prize and recognition. We regret that our budget doesn't allow for expensive prizes, but we wanted to show our appreciation for your hard work and dedication. 
-Prize structure:
-1. 300$ and certificate
-2. 200$ and certificate
-3. 100$ and certificate
+The challenge conditions and prizes will be updated soon...
 
 You can view the leaderboard [here](https://revivegretel.com/leaderboard).
 
@@ -107,7 +103,7 @@ To submit your solution, please open a new GitHub issue. Provide a link to your 
 Having dedicated substantial time to developing the DialogueFactory, we found ourselves needing help to develop all the necessary dialogue templates to reach our five-year milestone. The templates we need are detailed in the *Milestone* section of our [paper](http://dx.doi.org/10.13140/RG.2.2.22518.41283). However, if you're interested in developing templates that are important but aren't listed, feel free to submit those, too. We are open to including them in our next challenge. Please check our [jupyter notebook](template_tutorial.ipynb) to see how to develop a new template. You can find examples of templates [here](https://revivegretel.com/docs/dialoguefactory.generation.html#module-dialoguefactory.generation.templates).
 
 ### Earn recognition by developing
-We will recognize the template developers for their contributions by featuring their new dialogue templates in our [Hall of Fame](https://revivegretel.com/hof). With your consent, we will include some of these templates in our next challenge. Every two months, we'll spotlight one outstanding template, publicly acknowledge it, and award a token prize to its creator. We also encourage developing and submitting new templates because DialogueFactory users will benefit from generating even more data for their models. Furthermore, through our combined effort, we can create the first agent capable of semantic understanding.
+We will recognize the template developers for their contributions by featuring their new dialogue templates in our [Hall of Fame](https://revivegretel.com/hof). With your consent, we will include some of these templates in our next challenge. Every two months, we'll spotlight one outstanding template, publicly acknowledge it, and award a token prize to its creator. We also encourage developing and submitting new templates because DialogueFactory users will benefit from generating even more data for their models. Furthermore, through our combined effort, we can create the first agent capable of understanding language.
 
 Your efforts are greatly appreciated!
 
@@ -137,7 +133,7 @@ To cite our project, please use:
   url = {https://rgdoi.net/10.13140/RG.2.2.22518.41283},
   author = {Martinovski,  Stefan},
   language = {en},
-  title = {ReviveGretel Challenge: Acquiring Semantic Understanding Through Dialogue Generation In A Textual World},
+  title = {ReviveGretel Challenge: Acquiring Language Understanding Through Dialogue Generation In A Textual World},
   publisher = {Preprint},
   year = {2024}
 }
